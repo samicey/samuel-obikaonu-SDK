@@ -1,0 +1,21 @@
+{
+  "name": "obikaonu-samuel-sdk",
+  "version": "1.0.0",
+  "description": "lord of the rings sdk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write \"src/**/*.*\""
+  },
+  "author": "samuel obikaonu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "1.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.2",
+    "jest": "29.5.0",
+    "prettier": "2.8.8",
+    "typescript": "5.1.3"
+  }
+}
