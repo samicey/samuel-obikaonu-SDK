@@ -35,7 +35,7 @@ describe("QuoteController", () => {
         { id: "2", movieId: "2", text: "Quote 2", character: "Character 2" },
       ];
       const response = { data: quotes };
-      apiService.get.mockResolvedValueOnce(response);
+      (apiService.get as jest.MockedFunction<typeof axios.get>).mockResolvedValueOnce(response);
 
       const result = await quoteController.getQuotes();
 
@@ -45,7 +45,7 @@ describe("QuoteController", () => {
 
     it("should throw an error if unable to fetch quotes", async () => {
       const error = new Error("API error");
-      apiService.get.mockRejectedValueOnce(error);
+      (apiService.get as jest.MockedFunction<typeof axios.get>).mockRejectedValueOnce(error);
 
       await expect(quoteController.getQuotes()).rejects.toThrow(
         "Failed to fetch quotes: API error"
@@ -57,7 +57,7 @@ describe("QuoteController", () => {
     it("should return a quote by ID", async () => {
       const quote: Quote = { id: "1", movieId: "1", text: "Quote 1", character: "Character 1" };
       const response = { data: quote };
-      apiService.get.mockResolvedValueOnce(response);
+      (apiService.get as jest.MockedFunction<typeof axios.get>).mockResolvedValueOnce(response);
 
       const result = await quoteController.getQuote("1");
 
@@ -67,7 +67,7 @@ describe("QuoteController", () => {
 
     it("should throw an error if unable to fetch the quote", async () => {
       const error = new Error("API error");
-      apiService.get.mockRejectedValueOnce(error);
+      (apiService.get as jest.MockedFunction<typeof axios.get>).mockRejectedValueOnce(error);
 
       await expect(quoteController.getQuote("1")).rejects.toThrow(
         "Failed to fetch quote with ID 1: API error"
